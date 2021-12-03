@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# Sends a command to xscreensaver to lock, suspend after success.
+xscreensaver-command --lock && systemctl suspend
+

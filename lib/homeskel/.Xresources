@@ -1,0 +1,4 @@
+# Setting xterm to decent colors.
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+

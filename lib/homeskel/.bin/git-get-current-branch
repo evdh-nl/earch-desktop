@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# Helper script to get the current git-branch and format it do a desired template.
+
+# Check if in git branch
+git branch 1>/dev/null 2>/dev/null || exit
+
+# Parse option
+[[ -z $1 ]] && PARSE="%s" || PARSE="$1"
+
+# Print branch
+printf "$PARSE"  "$(git branch | grep '*' | cut -d ' ' -f 2)"
+
+# Beautiful exit!
+exit 0
+

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# Tint2 panel
+[[ -e "$(which tint2 2>/dev/null)" ]] && \
+tint2 &
+
+# NetworkManager applet
+[[ -e "$(which nm-applet 2>/dev/null)" ]] && \
+nm-applet &
+
+# Parcellite, clipboard tool
+[[ -e "$(which parcellite 2>/dev/null)" ]] && \
+parcellite >/dev/null $2>/dev/null  &
+
+# Conky
+[[ -e "$(which conky 2>/dev/null)" ]] && \
+conky -d -c ~/.config/conky/desktop &
+
+# Transparency
+[[ -e "$(which xcompmgr 2>/dev/null)" ]] && \
+xcompmgr &
+
+# Restore background
+[[ -e "$(which nitrogen 2>/dev/null)" ]] && \
+sleep 0.1 && nitrogen --restore &
+
+# Battery icon (Battery indicator)
+[[ -e "$(which cbatticon 2>/dev/null)" ]] && \
+cbatticon &
+
+# Volume wheel
+[[ -e "$(which pasystray 2>/dev/null)" ]] && \
+pasystray &
+
+# Start xcreensaver after 5s delay
+[[ -e "$(which xscreensaver 2>/dev/null)" ]] && \
+xscreensaver -no-splash &
+
+# XSS Lock
+[[ -e "$(which xss-lock 2>/dev/null)" ]] && \
+xss-lock -- xscreensaver-command --lock &
+
+# Merge local Xresource settings
+[[ -e "$(which xrdb 2>/dev/null)" ]] && \
+xrdb ~/.Xresources &
+
+# Dunst
+[[ -e "$(which dunst 2>/dev/null)" ]] && \
+dunst &
+
+# Bluetooth
+[[ -e "$(which blueman-applet 2>/dev/null)" ]] && \
+blueman-applet &
+

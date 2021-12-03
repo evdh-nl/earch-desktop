@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# Helper script that helps adjusting brightness based on ACPI  kernel module, shares info with Dunst. 
+# Please note that your user must have access to the /sys/class/backlight.
+# For more info see; https://wiki.archlinux.org/title/backlight#ACPI
+
+# Find adapters with backlight capabilities
+BACKLIGHTS=$(/usr/bin/ls /sys/class/backlight)
+
+# Mode
+MODE=$1
+
+# Percentage
+PER=${2:-10}
+
+# MsgId
+MSGID=421337
+
+# Notify
+dtnotify () {
+
+    # Check if Dunst is present
+    [[ -e "$(which dunstify 2>/dev/null)" ]] && \
+
+    # Dunstify!
+    dunstify "$1" -r "$MSGID"
+
+}
+
+# Manage backlight
+for BACKLIGHT in $BACKLIGHTS; do
+    let CUR=$(cat /sys/class/backlight/${BACKLIGHT}/brightness)
+    let MAX=$(cat /sys/class/backlight/${BACKLIGHT}/max_brightness)
+    let STP=${MAX}*${PER}/100
+
+    B_PATH=/sys/class/backlight/${BACKLIGHT}/brightness
+
+    # Check the actual mode
+    case $MODE in
+        up)
+            let b=${CUR}+${STP}
+            ;;
+        down)
+            let b=${CUR}-${STP}
+            ;;
+        set)
+            let b=${MAX}*${PER}/100
+            ;;
+        max)
+            b=${MAX}
+            ;;
+        *)
+            echo -e "Usage: ./brightnessctl <mode> [percentage:default(10)]\n\nmodes:\n- up: Up brightness with percentage\n- down: Down brightness with percentage\n- set: Set brightness at percentage\n- max: Max brightness"
+            exit 1;
+            ;;
+    esac
+    
+    if [[ $b -lt 0 ]]; then 
+        echo 0 > $B_PATH
+        dtnotify "Brightness changed (0/100)"
+    elif [[ $b -gt $MAX ]]; then
+        echo $MAX > $B_PATH
+        dtnotify "Brightness changed (100/100)"
+    else
+        echo $b > $B_PATH
+        let CPER=100*$b/$MAX
+        dtnotify "Brightness changed ($CPER/100)"
+    fi
+
+done

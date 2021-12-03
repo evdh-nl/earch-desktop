@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# Helper script that restores the desktop environment.
+
+# Restart conky
+killall conky && conky -d -c ~/.config/conky/desktop
+
+# Restore background
+nitrogen --restore
+
+# Reset Tint2 
+killall -SIGUSR1 tint2
+
+# Start tint if not started
+[[ ! $(pgrep tint2) ]] && tint2 &
+
+# Beautiful exit!
+exit 0
+

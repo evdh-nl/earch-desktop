@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="apps-extra-menu" label="Extra">
+		<item label="Signal">
+			<action name="Execute">
+				<execute>signal-desktop</execute>
+			</action>
+		</item>
+		<item label="KeepNote">
+			<action name="Execute">
+				<execute>keepnote</execute>
+			</action>
+		</item>
+		<item label="Pidgin">
+			<action name="Execute">
+				<execute>pidgin</execute>
+			</action>
+		</item>
+		<item label="Keepass">
+			<action name="Execute">
+				<execute>keepass</execute>
+			</action>
+		</item>
+		<item label="VM">
+			<action name="Execute">
+				<execute>virt-manager</execute>
+			</action>
+		</item>
+		<item label="Steam">
+			<action name="Execute">
+				<execute>steam</execute>
+			</action>
+		</item>
+		<item label="Skype">
+			<action name="Execute">
+				<execute>skype</execute>
+			</action>
+		</item>
+		<item label="Virtualbox">
+			<action name="Execute">
+				<execute>virtualbox</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-net-menu" label="Internet">
+		<item label="Firefox">
+			<action name="Execute">
+				<command>firefox</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>Firefox</wmclass>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Opera">
+			<action name="Execute">
+				<execute>opera</execute>
+			</action>
+		</item>
+		<item label="Chromium">
+			<action name="Execute">
+				<command>chromium</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>Chromium</wmclass>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-coding-menu" label="Editing">
+		<item label="Texmaker">
+			<action name="Execute">
+				<execute>texmaker</execute>
+			</action>
+		</item>
+		<item label="Sublime">
+			<action name="Execute">
+				<execute>~/bin/sublime_text</execute>
+			</action>
+		</item>
+		<item label="Leafpad">
+			<action name="Execute">
+				<execute>leafpad</execute>
+			</action>
+		</item>
+		<item label="Mercurial">
+			<action name="Execute">
+				<execute>thg</execute>
+			</action>
+		</item>
+		<item label="Netbeans">
+			<action name="Execute">
+				<execute>netbeans</execute>
+			</action>
+		</item>
+		<item label="Mysql Workbench">
+			<action name="Execute">
+				<execute>mysql-workbench</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-term-menu" label="Terminals">
+		<item label="Xterm">
+			<action name="Execute">
+				<command>xterm</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-multimedia-menu" label="Multimedia">
+		<item label="VLC">
+			<action name="Execute">
+				<execute>vlc</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-fileman-menu" label="File Managers">
+		<item label="PCMan File Manager">
+			<action name="Execute">
+				<command>pcmanfm</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="system-menu" label="System">
+		<item label="Openbox Configuration Manager">
+			<action name="Execute">
+				<command>obconf</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="Openbox Menu Editor">
+			<action name="Execute">
+				<execute>obmenu</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Display Settings">
+			<action name="Execute">
+				<execute>gksu arandr</execute>
+			</action>
+		</item>
+		<item label="Change Background">
+			<action name="Execute">
+				<execute>nitrogen</execute>
+			</action>
+		</item>
+		<item label="Lxappearance">
+			<action name="Execute">
+				<execute>lxappearance</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Reconfigure Openbox">
+			<action name="Reconfigure"/>
+		</item>
+	</menu>
+	<menu id="root-menu" label="Openbox 3">
+		<separator label="EvdH"/>
+		<menu id="apps-coding-menu"/>
+		<menu id="apps-extra-menu"/>
+		<menu id="apps-net-menu"/>
+		<menu id="apps-multimedia-menu"/>
+		<menu id="apps-term-menu"/>
+		<menu id="apps-fileman-menu"/>
+		<separator label="System"/>
+		<menu id="system-menu"/>
+		<separator/>
+		<item label="Log Out">
+			<action name="Exit">
+				<prompt>yes</prompt>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
