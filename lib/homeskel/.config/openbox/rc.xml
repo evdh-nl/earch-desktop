@@ -457,6 +457,15 @@
         <command>keepassxc</command>
       </action>
     </keybind>
+    <keybind key="C-A-s">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Signal</name>
+        </startupnotify>
+        <command>signal-desktop</command>
+      </action>
+    </keybind>
     <keybind key="C-A-d">
       <action name="Execute">
         <startupnotify>
@@ -464,6 +473,15 @@
           <name>Pass menu</name>
         </startupnotify>
         <command>passmenu</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-S-d">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Pass menu</name>
+        </startupnotify>
+        <command>passmenu --type</command>
       </action>
     </keybind>
     <keybind key="C-A-y">

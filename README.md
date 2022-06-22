@@ -79,7 +79,9 @@ Default Openbox shortcuts have been preserved, below are added or are explicitly
 | CTRL+ALT+T     | Start xterm and start or re-attach to screen. Use CTRL+ALT+{1-4} for different namespaces. |
 | CTRL+ALT+U     | Start xterm. |
 | CTRL+ALT+K     | Start keepassxc. |
+| CTRL+ALT+S     | Start signal desktop. |
 | CTRL+ALT+D     | Start passmenu (Convenient menu for passwordstore). |
+| CTRL+ALT+SHIFT+D | Start passmenu in type-mode (Types the password instead of putting it in the clipboard). |
 | CTRL+ALT+Y     | Start texmaker (Not installed by dependencies above). |
 | CTRL+ALT+E     | Start gmrun, allowing quick application execution. |
 | CTRL+ALT+W     | Start Thunderbird. |
