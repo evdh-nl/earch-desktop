@@ -1,4 +1,15 @@
-# Setting xterm to decent colors.
+// Setting xterm to decent colors.
 xterm*background: #000000
 xterm*foreground: #FFFFFF
 
+// Ensure 256 color support is enabled.
+XTerm.termName: xterm-256color
+
+// Send correct alt key to programs.
+XTerm.vt100.metaSendsEscape: true
+XTerm*metaSendsEscape: true
+
+// Bind CTRL+SHIFT+C/V for copy/pasting.
+XTerm*vt100.translations: #override \
+    Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD)

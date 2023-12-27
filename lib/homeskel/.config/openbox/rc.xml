@@ -466,6 +466,24 @@
         <command>signal-desktop</command>
       </action>
     </keybind>
+    <keybind key="C-A-S-a">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Qutebrowser</name>
+        </startupnotify>
+        <command>qutebrowser</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-a">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Qutebrowser</name>
+        </startupnotify>
+        <command>qutebrowser --target private-window</command>
+      </action>
+    </keybind>
     <keybind key="C-A-d">
       <action name="Execute">
         <startupnotify>
@@ -571,7 +589,7 @@
           <enabled>true</enabled>
           <name>Firefox</name>
         </startupnotify>
-        <command>firefox --private</command>
+        <command>firefox --private-window</command>
       </action>
     </keybind>
     <keybind key="C-A-S-f">
@@ -598,7 +616,7 @@
           <enabled>true</enabled>
           <name>Screenshot</name>
         </startupnotify>
-        <command>scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/images/screenshots/'</command>
+        <command>scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'dunstify "Screenshot made: $f"; mv $f ~/images/screenshots/'</command>
       </action>
     </keybind>
     <keybind key="S-A-3">
@@ -607,7 +625,25 @@
           <enabled>true</enabled>
           <name>Screenshot</name>
         </startupnotify>
-        <command>scrot -s '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'mv $f ~/images/screenshots/'</command>
+        <command>scrot -s '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'dunstify "Screenshot made: $f"; mv $f ~/images/screenshots/'</command>
+      </action>
+    </keybind>
+    <keybind key="S-C-A-4">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Screenshot</name>
+        </startupnotify>
+        <command>scrot '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'xclip -selection clipboard -t image/png -i $f; dunstify "Screenshot made and copied to clipboard: $f";  mv $f ~/images/screenshots/'</command>
+      </action>
+    </keybind>
+    <keybind key="S-C-A-3">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Screenshot</name>
+        </startupnotify>
+        <command>scrot -s '%Y-%m-%d_%H:%M:%S_$wx$h_scrot.png' -e 'xclip -selection clipboard -t image/png -i $f; dunstify "Screenshot made and copied to clipboard: $f"; mv $f ~/images/screenshots/'</command>
       </action>
     </keybind>
     <keybind key="C-A-c">

@@ -33,6 +33,12 @@ set smarttab
 set shiftwidth=2
 set tabstop=2
 
+" FZF default into new tab
+let g:fzf_action = { 'enter': 'tab split' }
+
+" FZF by ctrl+p
+nnoremap <silent> <C-p> :FZF<CR>
+
 " Different color scheme
-colorscheme elflord
+colorscheme molokai
 

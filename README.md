@@ -23,7 +23,7 @@ This setup assumes only a minimal Arch setup has been performed.
 ### Install dependencies
 
 ```bash
-sudo pacman -S alsa-lib alsa-utils bash-completion calc cbatticon conky dmenu dunst firefox firejail freetype2 geeqie git git-crypt gmrun gtk-engines keepassxc leafpad lightdm lightdm-gtk-greeter linux-firmware lxappearance network-manager-applet networkmanager nitrogen obconf openbox parcellite pass pasystray pavucontrol pcmanfm pulseaudio screen scrot signal-desktop thunderbird tint2 util-linux vim xdotool xorg-server xorg-xbacklight xorg-xrandr xorg-xrdb xscreensaver xss-lock xterm
+sudo pacman -S alsa-lib alsa-utils bash-completion calc cbatticon conky dmenu dunst firefox firejail freetype2 fzf geeqie git git-crypt gmrun gtk-engines keepassxc leafpad lightdm lightdm-gtk-greeter linux-firmware lxappearance network-manager-applet networkmanager nitrogen obconf openbox parcellite pass pasystray pavucontrol pcmanfm pulseaudio screen scrot signal-desktop thunderbird tint2 util-linux vim which xdotool xorg-server xorg-xbacklight xorg-xrandr xorg-xrdb xscreensaver xss-lock xterm
 ```
 > Note: if installing along an existing desktop environment, you might want to omit the lightdm packages.
 
@@ -43,6 +43,19 @@ Copy contents of lib/homeskel to either /etc/skel for a global config or your ho
 
 ### Nitrogen
 While all configs are working dynamically, Nitrogen isn't able to understand ~ as homedir. Therefore you have to manually point Nitrogen to the right directory, unless you use /home/evdh as homedir =).
+
+### Git tracking configuration files
+The bashrc has an alias to git, enabling to keep track of your configuration across hosts. 
+
+```bash
+# Initialize repo
+homecfg init
+
+# Show only tracked files
+homecfg config status.showuntrackedfiles no
+
+```
+> If you are enabling this on a second host, make sure to clone your config repo into `~/.config/homecfg`.
 
 Included configuration
 -----------------------
@@ -85,6 +98,8 @@ Default Openbox shortcuts have been preserved, below are added or are explicitly
 | CTRL+ALT+Y     | Start texmaker (Not installed by dependencies above). |
 | CTRL+ALT+E     | Start gmrun, allowing quick application execution. |
 | CTRL+ALT+W     | Start Thunderbird. |
+| CTRL+ALT+A     | Start Qutebrowser in private mode. |
+| CTRL+ALT+SHIFT+A | Start Qutebrowser in normal mode. |
 | CTRL+ALT+F     | Start Firefox in private mode. |
 | CTRL+ALT+SHIFT+F | Start Firefox in normal mode. |
 | CTRL+ALT+Q     | Start Calc. |
@@ -103,6 +118,8 @@ Default Openbox shortcuts have been preserved, below are added or are explicitly
 | CTRL+ALT+P     | Runs reset screen script, useful for laptop screens to reset default output. |
 | ALT+SHIFT+3    | Screenshot based on selection, automatically stored in ~/images/screenshots. |
 | ALT+SHIFT+4    | Screenshot of full screen, automatically stored in ~/images/screenshots. |
+| ALT+SHIFT+CTRL+3    | Screenshot based on selection, automatically stored in ~/images/screenshots and copied to clipboard. |
+| ALT+SHIFT+CTRL+4    | Screenshot of full screen, automatically stored in ~/images/screenshots and copied to clipboard. |
 | WIN+V          | Press middle mouse button (paste X selection clipboard). |
 | CTRL+SHIFT+V   | Show parcellite clipboard. |
 | CTRL+ALT+L     | Lock Screen. |
@@ -144,6 +161,7 @@ Used packages
 | firefox               | The browser anyone should use primarily. |
 | firejail              | Sandbox program, particulary useful to sandbox client applications such as Firefox. |
 | freetype2             | Font rasterization library. |
+| fzf                   | Fuzzy finder, finds files fast. |
 | geeqie                | Simple image display utility. |
 | git                   | The popular version control system. |
 | git-crypt             | Extension for git allowing to encrypt various files. |
@@ -187,9 +205,10 @@ Sources
 
 This configuration embeds and extends content from various other sources, see table below for references.
 
-| Source | Description | URL |
-| ------ | ---- | --- |
-| Faenza-Cupertino | Embedded icon theme. | [Source](https://www.xfce-look.org/p/1012542) |
-| GTK theme Elegant Brit | Source for the embedded GTK theme. | [Source](https://www.xfce-look.org/p/1080228) |
-| Arch-Linux-Wallpaper.png | Used wallpaper. | [Source](https://www.wallpaperflare.com/arch-linux-dark-gray-archlinux-minimalism-no-people-copy-space-wallpaper-zfi) |
+| Source | Description | License | Path | URL |
+| --- | --- | --- | --- | --- |
+| Faenza-Cupertino | Embedded icon theme. | Not found | lib/homeskel/.icons/Faenza-Cupertino | [Source](https://www.xfce-look.org/p/1012542) |
+| GTK theme Elegant Brit | Original source for the embedded GTK theme. | Not found | lib/homeskel/.themes/EvdH |  [Source](https://www.xfce-look.org/p/1080228) |
+| Arch-Linux-Wallpaper.png | Used wallpaper. | Not found | lib/homeskell/images/Arch-Linux-Wallpaper.png | [Source](https://www.wallpaperflare.com/arch-linux-dark-gray-archlinux-minimalism-no-people-copy-space-wallpaper-zfi) |
+| Molokai | Embedded Molokai VIM theme. | [MIT](https://github.com/tomasr/molokai/blob/master/LICENSE.md) | lib/homeskel/.vim/colors/molokai.vim | [Source](https://github.com/tomasr/molokai) | 
 
