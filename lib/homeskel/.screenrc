@@ -95,10 +95,14 @@ bind } history
 # Set fancy status bar 
 caption splitonly
 hardstatus alwayslastline
-hardstatus string "%{= C}%?%-Lw%?%{= 9B}[%{C}%n*%f %t%?(%u)%?%{= B}]%{= C}%?%+Lw%?%?%= %= %{B}[%{C}%l%{B}]%{= B}[%{= C}%m/%d/%y %c%{B}]%{W}"
+hardstatus string '%{6;#000}%-Lw%{4}[%{6}%n%f* %t%-%%{4}]%{-}%+w%=%{4}[%{6}%y%m%d %c%{4}]%{-}'
 
 # Larger buffer
 defscrollback 10000
 
 # Coloring
 term screen-256color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
