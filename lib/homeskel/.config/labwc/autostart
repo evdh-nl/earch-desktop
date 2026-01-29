@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Made by EvdH, no warranty just YOLO!
+
+# NetworkManager applet
+[[ -e "$(which nm-applet 2>/dev/null)" ]] && \
+nm-applet &
+
+# Cliphist
+[[ -e "$(which cliphist 2>/dev/null)" ]] && \
+wl-paste --watch cliphist store >/dev/null $2>/dev/null  &
+
+# Conky
+[[ -e "$(which conky 2>/dev/null)" ]] && \
+conky -d -c ~/.config/conky/desktop-wl &
+
+# Waybar
+[[ -e "$(which waybar 2>/dev/null)" ]] && \
+waybar -l off &
+
+# Merge local Xresource settings
+[[ -e "$(which xrdb 2>/dev/null)" ]] && \
+bash -c 'xrdb ~/.Xresources' &
+
+# Dunst
+[[ -e "$(which dunst 2>/dev/null)" ]] && \
+dunst &
+
+# Bluetooth
+[[ -e "$(which blueman-applet 2>/dev/null)" ]] && \
+blueman-applet &
+
+# Wallpaper
+[[ -e "$(which swaybg 2>/dev/null)" ]] && \
+swaybg -i ~/images/Arch-Linux-Wallpaper.png
+
+# Battery icon (Battery indicator), does notifications hence also op Labwc
+[[ -e "$(which cbatticon 2>/dev/null)" ]] && \
+cbatticon &
+

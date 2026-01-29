@@ -1,9 +1,9 @@
 Earch Desktop
 ===========
 
-A minimal xorg graphical environment for Arch Linux based on Openbox that I've been using for the past decade:
+A minimal xorg/wayland graphical environment for Arch Linux based on Openbox/Labwc that I've been using for the past decade:
 
-- Simple ultrafast Openbox configuration with various shortcuts to improve productivity;
+- Simple ultrafast Openbox/labwc configuration with various shortcuts to improve productivity;
 - Minimalistic styled Arch Linux theme;
 - Various utilities for daily usage;
 - Shared here for anyone due to various requests.
@@ -22,9 +22,22 @@ This setup assumes only a minimal Arch setup has been performed.
 
 ### Install dependencies
 
+Xorg and Wayland are both supported, pick the right set of packages. Can also be installed simultaneaously as the core idea is the same.
+
+#### Xorg
 ```bash
 sudo pacman -S alsa-lib alsa-utils bash-completion calc cbatticon conky dmenu dunst firefox firejail freetype2 fzf geeqie git git-crypt gmrun gtk-engines keepassxc leafpad lightdm lightdm-gtk-greeter linux-firmware lxappearance network-manager-applet networkmanager nitrogen obconf openbox parcellite pass pasystray pavucontrol pcmanfm pulseaudio screen scrot signal-desktop thunderbird tint2 util-linux vim which xdotool xorg-server xorg-xbacklight xorg-xrandr xorg-xrdb xscreensaver xss-lock xterm
 ```
+
+#### Wayland
+```bash
+# Install required packages
+sudo pacman -S alsa-lib alsa-utils bash-completion calc cbatticon conky dunst firefox firejail freetype2 fzf geeqie git git-crypt gmrun gtk-engines keepassxc leafpad lightdm lightdm-gtk-greeter linux-firmware lxappearance network-manager-applet networkmanager obconf pass pasystray pavucontrol pcmanfm pulseaudio screen signal-desktop thunderbird util-linux vim which xterm labwc waybar wmenu wl-clipboard waylock wofi cliphist swaybg grim flameshot wlr-randr
+
+# demnu-wl does not exist in arch repo, wmenu does.
+sudo ln -s /usr/bin/wmenu /usr/local/bin/dmenu-wl
+```
+
 > Note: if installing along an existing desktop environment, you might want to omit the lightdm packages.
 
 ### Enable daemons
@@ -41,7 +54,7 @@ Copy contents of lib/homeskel to either /etc/skel for a global config or your ho
 
 `cp -r lib/homeskel/. $HOME` 
 
-### Nitrogen
+### Nitrogen (Xorg)
 While all configs are working dynamically, Nitrogen isn't able to understand ~ as homedir. Therefore you have to manually point Nitrogen to the right directory, unless you use /home/evdh as homedir =).
 
 ### Git tracking configuration files
@@ -71,6 +84,12 @@ Included configuration
 - openbox
 - parcellite 
 - gnupg 
+- labwc
+- waybar
+- waylock
+- cliphist
+- swaybg
+- flameshot
 
 
 Available shortcuts
@@ -78,7 +97,7 @@ Available shortcuts
 
 Default Openbox shortcuts have been preserved, below are added or are explicitly mentioned for productivity purposes.
 
-### Openbox Desktop management
+### Openbox/Labwc Desktop management
 
 | Shortcut       | Description      |
 | -------------- | ---------------- |
@@ -135,6 +154,8 @@ Default Openbox shortcuts have been preserved, below are added or are explicitly
 | Win+ArrowDown  | Resize Window's height to 50% and align to the bottom. |
 | Win+K          | Resize both Window's width and height to 100%. |
 
+> Arrow shortcuts only work on Openbox.
+
 ### Implemented XF86 keys
 
 | Key                   | Action                    |
@@ -148,6 +169,8 @@ Default Openbox shortcuts have been preserved, below are added or are explicitly
 Used packages
 -------------------
 
+### Generic
+
 | Package               | Description | 
 | --------------------- | ----------- |
 | alsa-lib              | Library for sound. |
@@ -156,7 +179,6 @@ Used packages
 | calc                  | Command line calculator. |
 | cbatticon             | Additional battery icon, useful for laptops. |
 | conky                 | Utility to illustrate system metrics on the desktop, used to display hostname, kernel and architecture. |
-| dmenu                 | Library to create menu's in Xorg |
 | dunst                 | Desktop notification tool. |
 | firefox               | The browser anyone should use primarily. |
 | firejail              | Sandbox program, particulary useful to sandbox client applications such as Firefox. |
@@ -175,30 +197,51 @@ Used packages
 | lxappearance          | Tool to manage Openbox appearance. |
 | network-manager-applet| Tray applet for Network Manager. |
 | networkmanager        | Network Manager, especially easy for laptops managing various WiFi and VPN connections. |
-| nitrogen              | Wallpaper utility. |
 | obconf                | Openbox configuration utility. |
-| openbox               | The actual window manager. |
-| parcellite            | Simple clipboard manager. |
 | pass                  | Passwordstore.org password manager. |
 | pasystray             | Pulse audio system tray icon. |
 | pavucontrol           | Pulse audtio volume control. |
 | pcmanfm               | Simple file manager. |
 | pulseaudio            | Pulse audio, acting as audio interface on top of alsa so multiple programs can simultaneously play audio. |
 | screen                | GNU Screen. |
-| scrot                 | Screenshot utility. |
 | signal-desktop        | Desktop client for Signal messenger. |
 | thunderbird           | Mozilla's email client. |
-| tint2                 | Heavily customizable taskbar. |
 | util-linux            | Various utilities. |
 | vim                   | You're probably looking at the wrong repo if this is new to you. |
+| xorg-xrdb             | Utility to merge Xorg settings with locals. |
+| xterm                 | Lightweight terminal emulator. (Also used as primary driver on Wayland) |
+
+### Xorg
+| Package               | Description | 
+| --------------------- | ----------- |
+| dmenu                 | Library to create menu's in Xorg |
+| nitrogen              | Wallpaper utility. |
+| openbox               | The actual window manager. |
+| parcellite            | Simple clipboard manager. |
+| scrot                 | Screenshot utility. |
+| tint2                 | Heavily customizable taskbar. |
 | xdotool               | Utility enabling to perform xorg commands from the CLI. |
 | xorg-server           | Xorg, X server enabling a GUI. |
 | xorg-xbacklight       | Backlight utility. |
 | xorg-xrandr           | Command line utility to configure display output. |
-| xorg-xrdb             | Utility to merge Xorg settings with locals. |
 | xscreensaver          | Lightweight screensaver. |
 | xss-lock              | Simple utility that helps locking the screen. |
-| xterm                 | Lightweight terminal emulator. |
+
+### Wayland
+| Package               | Description | 
+| --------------------- | ----------- |
+| cliphist              | Simple clipboard manager |
+| flameshot             | Fully featured screenshot utility. (leverages grim) |
+| grim                  | Image grabber (screenshots full screen). |
+| labwc                 | The actual window manager (Compositor in Wayland). |
+| swaybg                | Wallpaper utility. |
+| waybar                | Heavy customizable taskbar. |
+| waylock               | Screen lock utility. |
+| wl-clipboard          | Command line clipboard tool. |
+| wlr-randr             | Command line utility to configure display output. |
+| wmenu                 | Wayland alternative for dmenu. |
+| wofi                  | Dynamic launcher, primarily used for clipboard management. |
+
 
 Sources
 -------
